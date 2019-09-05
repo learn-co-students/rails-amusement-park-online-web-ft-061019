@@ -18,6 +18,18 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+          <% if is_logged_in? %>
+          <a class="navbar-brand" href="<%= user_path(current_user) %>"/><%= current_user.name %>'s Profile</a>
+
+          <%= link_to  "Log Out", sessions_path, method: "delete" %>
+          
+          <% else %>
+          <a class="navbar-brand" href="<%= new_user_path %>"/>Sign Up</a>
+          <a class="navbar-brand" href="<%= signin_path %>"/>Log In</a>
+          <% end %>
+          
+        
+
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -29,6 +41,11 @@
 
     <!-- content -->
     <div class="container"  role="main">
+      <div class="center alert">
+          <% if flash[:notify].present? %>
+            <%= flash[:notify] %>
+          <% end %>
+      </div>
       <%= yield %>
     </div>
   </body>

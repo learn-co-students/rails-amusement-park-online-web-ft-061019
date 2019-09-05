@@ -1,0 +1,9 @@
+<%= form_for @attraction do |f| %>
+   <p>name: <%= f.text_field :name %><br>
+   tickets: <%= f.number_field :tickets %><br>
+   nausea_rating: <%= f.number_field :nausea_rating, in: 1..5, step: 1 %><br>
+   happiness_rating: <%= f.number_field :happiness_rating, in: 1..5, step: 1 %><br>
+   min_height: <%= f.number_field :min_height, in: 1..100, step: 1 %><br>
+   </p> 
+   <%= f.submit %>
+<% end %>
