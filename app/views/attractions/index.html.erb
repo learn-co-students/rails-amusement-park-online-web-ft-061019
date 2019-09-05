@@ -1,0 +1,24 @@
+<h1>Attractions#index</h1>
+<p>Find me in app/views/attractions/index.html.erb</p>
+
+Look at all the attractions! 
+<table class="table">
+   <thead>
+      <th>Name</th>
+      <th>Tickets</th>
+      <% if current_user.admin %>
+         <th>Admin</th>
+      <% else %>
+         <th>Details</th>
+      <% end %>
+   </thead>
+
+   <tbody>
+      <% @attractions.each do |attraction| %>
+         <%= render partial: "attraction", locals: {attraction: attraction} %>
+      <% end %> 
+   </tbody>
+</table><br>
+<% if current_user.admin  %>
+   <%= link_to  "New Attraction", new_attraction_path %>
+<% end %>

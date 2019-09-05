@@ -1,0 +1,19 @@
+<h1>Sessions#signin</h1>
+<p>Find me in app/views/sessions/signin.html.erb</p>
+
+<%= form_for @user, url: "/sessions" do |f| %>
+   <label for="user_name">Your name:</label>
+   <%= f.collection_select :name, @users, :id, :name %><br>
+   <label for="user_password">Your password:</label><br>
+   <%= f.text_field :password %><br>
+   <%= f.submit "Sign In" %>
+<% end %>
+
+
+<!-- <%= form_tag "/session" do %>
+   <label for="name">Your name:</label>
+   <%= select_tag "user_name", options_for_select(@users) %>
+   <label for="password">Your Password: </label><br>
+   <input type="password" name="password" id="password"><br>
+   <%= submit_tag "Sign In" %>
+<% end %> -->
